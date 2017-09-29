@@ -41,8 +41,8 @@ int main() {
 		}
 		if (strcmp(entry->name, "Lucy")==0) {
 			struct information *Lucy = (struct information *)malloc (sizeof(struct information));
-            char math[50] = "5+5=10";
-            char english[50] = "hello world";
+            char math[50];
+            char english[50];
 
 			if (lseek(fd, metadata->offset_stu + entry->num * sizeof(struct information), SEEK_SET)<0) {
 				printf("Error in lseek() of storing Lucy structure information\n");
