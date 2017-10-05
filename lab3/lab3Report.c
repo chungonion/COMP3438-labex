@@ -21,7 +21,7 @@ int main() {
 		return -1;
 	}
 	struct information *POLYU = (struct information *)malloc (sizeof(struct information));
-	if (read(fd, (void *)POLYU, sizeof (struct information))<0) {
+	if (read(fd, (struct information *)POLYU, sizeof (struct information))<0) {
 		printf("Error in write() of storing POLYU\n");
 		return -1;
 	}
