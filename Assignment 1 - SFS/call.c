@@ -13,6 +13,13 @@ int superblock_modify(int fd, struct superblock* superblock_data, char* key, int
 int read_data_block(int fd, struct superblock* superblock_data, struct inode* inode_data, void *buf, int offset, int count);
 int write_data_block(int fd, struct superblock* superblock_data, struct inode* inode_data, void *buf, int offset, int count);
 
+
+struct indir_pointer //indirect block's pointer, stored in indirect data block
+{
+	int block_index; // index of a datablock
+};
+
+
 int open_t(char *pathname, int flags) {
 	//flag 0 = exist file and replace it
 	//flag 1 = exist directory and replace it
@@ -609,12 +616,11 @@ int read_data_block(int fd, struct superblock* superblock_data, struct inode* in
 
 	} else if (offset<superblock_data->blk_size * 2){
 		int read_bytes = 0;
-		int offset_remainder = offset -superblock_data->blk_size;
 		if (inode_data->direct_blk[1]<=0) {
 			//reclaim new data block
 			return 0;
 		}
-		if (lseek(fd, superblock_data->data_offset + inode_data->direct_blk[1] * superblock_data->blk_size+offset_remainder, SEEK_SET)<0) {
+		if (lseek(fd, superblock_data->data_offset + inode_data->direct_blk[1] * superblock_data->blk_size, SEEK_SET)<0) {
 			printf("LSEEK ERROR!\n");
 		}
 
@@ -789,9 +795,6 @@ int write_data_block(int fd, struct superblock* superblock_data, struct inode* i
 			}
 			//TODO: I-node-manipulation
 		}
-
-
 	}
-
 	return write_bytes;
 }

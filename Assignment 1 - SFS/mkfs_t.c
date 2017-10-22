@@ -58,15 +58,15 @@ int main() {
 		printf("Error in read()!\n");
 	}
 
-	
+
 	//Test whether read is success, printf something to test.
-	printf("inode offset: %d\n", test->inode_offset);
-	printf("data offset: %d\n", test->data_offset);
-	printf("max. inode: %d\n", test->max_inode);
-	printf("max data block: %d\n", test->max_data_blk);
-	printf("next available inode: %d\n", test->next_available_inode);
-	printf("next available block: %d\n", test->next_available_blk);
-	printf("block size: %d\n", test->blk_size);
+	// printf("inode offset: %d\n", test->inode_offset);
+	// printf("data offset: %d\n", test->data_offset);
+	// printf("max. inode: %d\n", test->max_inode);
+	// printf("max data block: %d\n", test->max_data_blk);
+	// printf("next available inode: %d\n", test->next_available_inode);
+	// printf("next available block: %d\n", test->next_available_blk);
+	// printf("block size: %d\n", test->blk_size);
 	//Above for testing purpose only
 
 
