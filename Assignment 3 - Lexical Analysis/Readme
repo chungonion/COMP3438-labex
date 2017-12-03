@@ -1,0 +1,8 @@
+Instruction for Q4
+1. How to compile:
+
+gcc -o assignment3.c
+
+2. How to run:
+
+./assignment3 Q4
